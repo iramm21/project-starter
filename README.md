@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Project Starter - Authentication App
 
-## Getting Started
+## Current Features
 
-First, run the development server:
+- **User Authentication**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  - Register new users with email and password
+  - Login with email and password
+  - Client-side forms with validation and UI feedback
+  - Server-side Supabase client integration for auth actions
+  - Session management with secure cookies
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js 13 App Router Structure**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+  - `/app/(auth)/login` - Login page and components
+  - `/app/(auth)/register` - Registration page and components
+  - `(private)` - Placeholder for authenticated user routes (future)
+  - `(public)` - Publicly accessible routes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **UI Components**
 
-## Learn More
+  - Custom reusable UI primitives: Buttons, Inputs, Labels, Cards, Switches
+  - Theme toggling (dark/light mode)
+  - Toast notifications with `sonner`
+  - Icons (Next.js, Prisma, Shadcn, Supabase, Tailwind)
 
-To learn more about Next.js, take a look at the following resources:
+- **Lib Layer**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  - `supabase/client.ts` - Browser Supabase client setup
+  - `supabase/server.ts` - Server Supabase client factory for server actions
+  - Utility helpers in `utils.ts`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **TypeScript**
+  - Typed Supabase database schema in `types/supabase.ts`
+  - Strict typing throughout actions and components
 
-## Deploy on Vercel
+## Directory Structure Overview
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+src/
+├── app/
+│ ├── (auth)/
+│ │ ├── login/
+│ │ │ └── page.tsx
+│ │ ├── register/
+│ │ │ └── page.tsx
+│ │ └── layout.tsx
+│ ├── (private)/
+│ ├── (public)/
+│ │ ├── layout.tsx
+│ │ └── page.tsx
+│ └── layout.tsx
+├── components/
+│ ├── icons/
+│ │ ├── NextjsLogo.tsx
+│ │ ├── PrismaLogo.tsx
+│ │ ├── ShadcnLogo.tsx
+│ │ ├── SupabaseLogo.tsx
+│ │ └── TailwindLogo.tsx
+│ ├── providers/
+│ │ └── ThemeProvider.tsx
+│ └── ui/
+│ ├── badge.tsx
+│ ├── button.tsx
+│ ├── card.tsx
+│ ├── input.tsx
+│ ├── label.tsx
+│ ├── separator.tsx
+│ ├── sonner.tsx
+│ ├── switch.tsx
+│ └── theme-toggle.tsx
+│ ├── Footer.tsx
+│ └── Header.tsx
+├── features/
+│ ├── auth/
+│ │ ├── actions/
+│ │ │ ├── login.ts
+│ │ │ └── register.ts
+│ │ └── components/
+│ │ ├── login-form.tsx
+│ │ └── register-form.tsx
+│ └── users/
+│ ├── actions/
+│ └── components/
+├── lib/
+│ ├── supabase/
+│ │ ├── client.ts
+│ │ └── server.ts
+│ └── utils.ts
+├── styles/
+│ └── globals.css
+└── types/
+└── supabase.ts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
