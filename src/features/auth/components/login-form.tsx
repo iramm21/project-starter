@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,7 +23,7 @@ export function LoginForm({
       loginWithEmail(email, password)
         .then(() => {
           toast.success("Logged in successfully");
-          router.push("/");
+          router.push("/dashboard");
         })
         .catch((err) => toast.error(err.message));
     });

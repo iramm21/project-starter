@@ -14,13 +14,25 @@ export function RegisterForm({
 }: React.ComponentProps<"form">) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+
   const router = useRouter();
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     startTransition(() => {
-      registerWithEmail(email, password)
+      registerWithEmail({
+        email,
+        password,
+        firstName,
+        lastName,
+        phone,
+        address,
+      })
         .then(() => {
           toast.success("Account created! Check your email.");
           router.push("/login");
@@ -41,11 +53,54 @@ export function RegisterForm({
           Enter your details below to create a new account
         </p>
       </div>
+
       <div className="grid gap-6">
         <div className="grid gap-3">
-          <Label htmlFor="name">Full Name</Label>
-          <Input id="name" type="text" placeholder="Your full name" required />
+          <Label htmlFor="firstName">First Name</Label>
+          <Input
+            id="firstName"
+            type="text"
+            placeholder="Your first name"
+            required
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+          />
         </div>
+
+        <div className="grid gap-3">
+          <Label htmlFor="lastName">Last Name</Label>
+          <Input
+            id="lastName"
+            type="text"
+            placeholder="Your last name"
+            required
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </div>
+
+        <div className="grid gap-3">
+          <Label htmlFor="phone">Phone</Label>
+          <Input
+            id="phone"
+            type="tel"
+            placeholder="Your phone number"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+        </div>
+
+        <div className="grid gap-3">
+          <Label htmlFor="address">Address</Label>
+          <Input
+            id="address"
+            type="text"
+            placeholder="Your address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+          />
+        </div>
+
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
           <Input
@@ -57,6 +112,7 @@ export function RegisterForm({
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
+
         <div className="grid gap-3">
           <Label htmlFor="password">Password</Label>
           <Input
@@ -67,14 +123,17 @@ export function RegisterForm({
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+
         <Button type="submit" className="w-full">
           Register
         </Button>
+
         <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
           <span className="bg-background text-muted-foreground relative z-10 px-2">
             Or continue with
           </span>
         </div>
+
         <Button variant="outline" className="w-full" type="button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -87,6 +146,7 @@ export function RegisterForm({
           Register with GitHub
         </Button>
       </div>
+
       <div className="text-center text-sm">
         Already have an account?{" "}
         <a href="/login" className="underline underline-offset-4">
