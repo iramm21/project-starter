@@ -4,16 +4,17 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 export default async function DashboardPage() {
   const supabase = await createSupabaseServerClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
 
-  if (!session?.user) {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser(); // ✅ Secure method
+
+  if (!user) {
     return <p>Please log in to see your dashboard.</p>;
   }
 
   const userProfile = await prisma.userProfile.findUnique({
-    where: { authUserId: session.user.id },
+    where: { authUserId: user.id },
   });
 
   if (!userProfile) {
