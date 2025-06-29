@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils"; // your utility for conditional classes
-import { LogoutButton } from "@/components/LogoutButton";
+import { LogoutButton } from "@/features/auth/components/LogoutButton";
 
 export function Sidebar() {
   const pathname = usePathname();

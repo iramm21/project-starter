@@ -3,13 +3,18 @@
 
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-export async function loginWithEmail(email: string, password: string) {
+export async function loginWithEmailServer(email: string, password: string) {
   const supabase = await createSupabaseServerClient();
 
-  const { error } = await supabase.auth.signInWithPassword({
+  const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
   });
 
   if (error) throw new Error(error.message);
+
+  return {
+    access_token: data.session?.access_token,
+    refresh_token: data.session?.refresh_token,
+  };
 }
