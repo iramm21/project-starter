@@ -1,28 +1,18 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { startTransition } from "react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { logout } from "@/features/auth/actions/logout";
+import { supabase } from "@/lib/supabase/client";
 
 export function LogoutButton() {
-  const router = useRouter();
-
   async function handleLogout() {
-    startTransition(async () => {
-      try {
-        await logout();
-        toast.success("Logged out!");
-        router.push("/login"); // or wherever you want to redirect
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          toast.error(`Logout failed: ${error.message}`);
-        } else {
-          toast.error("Logout failed: Unknown error");
-        }
-      }
-    });
+    try {
+      await supabase.auth.signOut();
+      toast.success("Logged out!");
+      window.location.href = "/login"; // force full reload
+    } catch {
+      toast.error("Logout failed");
+    }
   }
 
   return (

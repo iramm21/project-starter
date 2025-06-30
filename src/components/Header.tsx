@@ -1,46 +1,39 @@
 "use client";
-
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase/client";
+import type { User, Session, AuthChangeEvent } from "@supabase/auth-js";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { LogoutButton } from "@/features/auth/components/LogoutButton";
-import type { User, Session, AuthChangeEvent } from "@supabase/auth-js";
 
 export function Header() {
   const [user, setUser] = useState<User | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const { data, error } = await supabase.auth.getSession();
-      if (error) console.error("Session fetch error:", error);
+    // initial load
+    supabase.auth.getSession().then(({ data }) => {
       setUser(data.session?.user ?? null);
-      setIsMounted(true);
-      console.log("Session data", data);
-    };
+      setMounted(true);
+    });
 
-    fetchUser();
-
-    const { data: authListener } = supabase.auth.onAuthStateChange(
+    // listen for changes
+    const { data: listener } = supabase.auth.onAuthStateChange(
       (_event: AuthChangeEvent, session: Session | null) => {
         setUser(session?.user ?? null);
       }
     );
-
-    return () => {
-      authListener.subscription.unsubscribe();
-    };
+    return () => listener.subscription.unsubscribe();
   }, []);
 
-  if (!isMounted) return null;
+  if (!mounted) return null;
 
   return (
     <header className="w-full border-b border-muted/20 bg-background sticky top-0 z-50">
@@ -48,7 +41,6 @@ export function Header() {
         <Link href="/">
           <h1 className="text-xl font-bold cursor-pointer">Your App Name</h1>
         </Link>
-
         <nav className="flex items-center gap-4">
           {!user ? (
             <>
