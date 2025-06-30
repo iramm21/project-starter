@@ -23,7 +23,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="flex-grow container max-w-7xl mx-auto">
+          <main className="flex-grow w-full px-4 md:px-6 lg:px-8">
             {children}
           </main>
           <Toaster position="top-right" richColors />

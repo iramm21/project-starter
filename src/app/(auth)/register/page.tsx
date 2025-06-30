@@ -1,38 +1,45 @@
-import { GalleryVerticalEnd } from "lucide-react";
+import { GalleryVerticalEnd, Home } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { RegisterForm } from "@/features/auth/components/register-form";
 
 export default function RegisterPage() {
   return (
-    <div className="grid min-h-screen lg:grid-cols-2">
-      {/* Left side: Logo and form */}
-      <div className="flex flex-col gap-6 p-6 md:p-10">
-        {/* Logo */}
-        <div className="flex justify-center md:justify-start items-center gap-2">
-          <a
-            href="#"
-            className="flex items-center gap-2 font-semibold text-lg text-primary"
-          >
-            <div className="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center rounded-md">
-              <GalleryVerticalEnd className="h-5 w-5" />
-            </div>
-            Company Inc.
-          </a>
+    <div className="flex min-h-screen w-full flex-col lg:flex-row">
+      {/* Left side: Logo + Form */}
+      <div className="flex flex-1 flex-col justify-center px-6 sm:px-12 py-12 lg:max-w-xl relative">
+        {/* Home Button */}
+        <div className="absolute top-6 left-6">
+          <Button variant="ghost" size="sm" asChild>
+            <Link href="/">
+              <Home className="w-4 h-4 mr-1" />
+              Home
+            </Link>
+          </Button>
         </div>
 
-        {/* Form container */}
-        <div className="flex flex-1 items-center justify-center">
-          <div className="w-full max-w-md">
-            <RegisterForm />
+        {/* Logo */}
+        <div className="flex items-center gap-2 mb-8 justify-center lg:justify-start">
+          <div className="bg-primary text-primary-foreground flex h-9 w-9 items-center justify-center rounded-md">
+            <GalleryVerticalEnd className="h-5 w-5" />
           </div>
+          <span className="text-lg font-semibold text-primary">
+            Company Inc.
+          </span>
+        </div>
+
+        {/* Register Form */}
+        <div className="w-full">
+          <RegisterForm />
         </div>
       </div>
 
       {/* Right side: Image */}
-      <div className="relative hidden lg:block">
+      <div className="hidden lg:block lg:flex-1 relative">
         <Image
           src="/auth.jpg"
-          alt="Decorative image"
+          alt="Register background"
           fill
           className="object-cover"
           priority

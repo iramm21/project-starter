@@ -1,4 +1,3 @@
-// app/dashboard/page.tsx
 import prisma from "@/lib/prisma";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
@@ -10,7 +9,9 @@ export default async function DashboardPage() {
   } = await supabase.auth.getUser(); // ✅ Secure method
 
   if (!user) {
-    return <p>Please log in to see your dashboard.</p>;
+    return (
+      <p className="text-center mt-10">Please log in to see your dashboard.</p>
+    );
   }
 
   const userProfile = await prisma.userProfile.findUnique({
@@ -18,13 +19,13 @@ export default async function DashboardPage() {
   });
 
   if (!userProfile) {
-    return <p>User profile not found.</p>;
+    return <p className="text-center mt-10">User profile not found.</p>;
   }
 
   return (
-    <div>
-      <h2>Your Profile Info</h2>
-      <ul className="list-disc pl-6">
+    <div className="max-w-3xl mx-auto px-4 py-8">
+      <h2 className="text-2xl font-semibold mb-6">Your Profile Info</h2>
+      <ul className="list-disc pl-6 space-y-2 text-lg">
         <li>
           <strong>Email:</strong> {userProfile.email}
         </li>

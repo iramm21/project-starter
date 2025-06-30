@@ -1,4 +1,3 @@
-// app/layout.tsx
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { Header } from "@/components/Header";
@@ -10,16 +9,16 @@ export const metadata: Metadata = {
     "The project starter for a PSSN (Prisma, Supabase, Shadcn, NextJS) stack",
 };
 
-export default function RootLayout({
+export default function PublicLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <body className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-background text-foreground w-full">
       <Header />
-      <main className="flex-grow container max-w-7xl mx-auto">{children}</main>
+      <main className="flex-grow w-full px-4 md:px-6 lg:px-8">{children}</main>
       <Footer />
-    </body>
+    </div>
   );
 }
