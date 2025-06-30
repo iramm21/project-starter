@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { toast } from "sonner";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { toast } from 'sonner';
 import {
   ShieldCheck,
   LayoutPanelLeft,
@@ -11,13 +11,13 @@ import {
   Database,
   Layers3,
   Rocket,
-} from "lucide-react";
+} from 'lucide-react';
 
-import { NextjsLogo } from "@/components/icons/NextjsLogo";
-import { PrismaLogo } from "@/components/icons/PrismaLogo";
-import { SupabaseLogo } from "@/components/icons/SupabaseLogo";
-import { TailwindLogo } from "@/components/icons/TailwindLogo";
-import { ShadcnLogo } from "@/components/icons/ShadcnLogo";
+import { NextjsLogo } from '@/components/icons/NextjsLogo';
+import { PrismaLogo } from '@/components/icons/PrismaLogo';
+import { SupabaseLogo } from '@/components/icons/SupabaseLogo';
+import { TailwindLogo } from '@/components/icons/TailwindLogo';
+import { ShadcnLogo } from '@/components/icons/ShadcnLogo';
 
 export default function HomePage() {
   return (
@@ -32,7 +32,7 @@ export default function HomePage() {
           Next.js.
         </p>
         <Button
-          onClick={() => toast.success("This is a working toast! 🎉")}
+          onClick={() => toast.success('This is a working toast! 🎉')}
           variant="default"
           className="mt-4"
         >

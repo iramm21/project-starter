@@ -1,6 +1,6 @@
 {
   "name": "project-starter",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -11,7 +11,8 @@
     "p-generate": "prisma generate",
     "p-studio": "prisma studio",
     "p-format": "prisma format",
-    "p-reset": "prisma migrate reset --force"
+    "p-reset": "prisma migrate reset --force",
+    "format": "npx prettier --write ."
   },
   "dependencies": {
     "@prisma/client": "^6.10.1",
@@ -40,6 +41,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.4",
     "typescript": "^5"

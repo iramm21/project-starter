@@ -1,94 +1,164 @@
-# Project Starter - Authentication App
+# 🧪 Project Starter – PSSN Stack
 
-## Current Features
+A modern and production-ready starter template using the **PSSN** stack:
 
-- **User Authentication**
+- **P**risma – Type-safe ORM
+- **S**upabase – Auth, DB, and Storage
+- **S**hadcn/UI – Accessible, beautiful UI components
+- **N**ext.js – App Router (15+)
 
-  - Register new users with email and password
-  - Login with email and password
-  - Client-side forms with validation and UI feedback
-  - Server-side Supabase client integration for auth actions
-  - Session management with secure cookies
-
-- **Next.js 13 App Router Structure**
-
-  - `/app/(auth)/login` - Login page and components
-  - `/app/(auth)/register` - Registration page and components
-  - `(private)` - Placeholder for authenticated user routes (future)
-  - `(public)` - Publicly accessible routes
-
-- **UI Components**
-
-  - Custom reusable UI primitives: Buttons, Inputs, Labels, Cards, Switches
-  - Theme toggling (dark/light mode)
-  - Toast notifications with `sonner`
-  - Icons (Next.js, Prisma, Shadcn, Supabase, Tailwind)
-
-- **Lib Layer**
-
-  - `supabase/client.ts` - Browser Supabase client setup
-  - `supabase/server.ts` - Server Supabase client factory for server actions
-  - Utility helpers in `utils.ts`
-
-- **TypeScript**
-  - Typed Supabase database schema in `types/supabase.ts`
-  - Strict typing throughout actions and components
-
-## Directory Structure Overview
-
-src/
-├── app/
-│ ├── (auth)/
-│ │ ├── login/
-│ │ │ └── page.tsx
-│ │ ├── register/
-│ │ │ └── page.tsx
-│ │ └── layout.tsx
-│ ├── (private)/
-│ ├── (public)/
-│ │ ├── layout.tsx
-│ │ └── page.tsx
-│ └── layout.tsx
-├── components/
-│ ├── icons/
-│ │ ├── NextjsLogo.tsx
-│ │ ├── PrismaLogo.tsx
-│ │ ├── ShadcnLogo.tsx
-│ │ ├── SupabaseLogo.tsx
-│ │ └── TailwindLogo.tsx
-│ ├── providers/
-│ │ └── ThemeProvider.tsx
-│ └── ui/
-│ ├── badge.tsx
-│ ├── button.tsx
-│ ├── card.tsx
-│ ├── input.tsx
-│ ├── label.tsx
-│ ├── separator.tsx
-│ ├── sonner.tsx
-│ ├── switch.tsx
-│ └── theme-toggle.tsx
-│ ├── Footer.tsx
-│ └── Header.tsx
-├── features/
-│ ├── auth/
-│ │ ├── actions/
-│ │ │ ├── login.ts
-│ │ │ └── register.ts
-│ │ └── components/
-│ │ ├── login-form.tsx
-│ │ └── register-form.tsx
-│ └── users/
-│ ├── actions/
-│ └── components/
-├── lib/
-│ ├── supabase/
-│ │ ├── client.ts
-│ │ └── server.ts
-│ └── utils.ts
-├── styles/
-│ └── globals.css
-└── types/
-└── supabase.ts
+Built with developer experience, flexibility, and performance in mind.
 
 ---
+
+## ✨ Features
+
+- 🔐 **Authentication** with Supabase (email/password)
+- 👤 **User profiles** created on registration
+- 🔄 **Protected routes** (server and client-side)
+- 🎨 **Theming** (dark/light mode toggle)
+- 🧱 **Responsive layouts** (public, auth, private dashboard)
+- ⚡ **Pre-configured** ESLint, Prettier, Tailwind, env, and toast
+- 🚀 **Extendable** and clean file structure
+
+---
+
+## 📦 Tech Stack
+
+- Next.js
+- Prisma
+- Supabase
+- Tailwind CSS
+- Shadcn UI
+- Lucide Icons
+- Sonner (toast notifications)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repo
+
+```git
+git clone https://github.com/iramm21/project-starter.git
+cd project-starter
+```
+
+### 2. Install dependencies
+
+```pnpm
+pnpm install
+```
+
+or
+
+```npm
+npm install
+```
+
+or
+
+```yarn
+yarn
+```
+
+### 3. Set up environment variables
+
+Create a `.env` file based on `.env.example`:
+
+```.env
+NEXT_PUBLIC_SUPABASE_URL=your-project-url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+DATABASE_URL=your-database-connection-string
+```
+
+> You can find these in your Supabase project dashboard.
+
+---
+
+### 4. Set up the database
+
+Make sure `DATABASE_URL` is set in `.env` and run:
+
+```npx
+npx prisma migrate dev --name init
+```
+
+This sets up the initial schema and seeds (if added).
+
+---
+
+### 5. Run the dev server
+
+```npm
+npm run dev
+```
+
+or
+
+```pnpm
+pnpm dev
+```
+
+Visit [http://localhost:3000](http://localhost:3000) to start building.
+
+---
+
+## 🛠 Project Structure
+
+```md
+.
+├── app/ # Next.js App Router pages/layouts
+├── components/ # UI components (shadcn, custom)
+├── features/ # Feature-based components and logic
+├── lib/ # Supabase and Prisma clients
+├── styles/ # Global CSS
+├── prisma/ # Prisma schema and migrations
+├── public/ # Static assets (e.g. images)
+└── utils/ # Reusable utilities
+```
+
+---
+
+## 📄 Scripts
+
+- `dev` – run in development
+- `build` – build the app for production
+- `lint` – run ESLint
+- `format` – run Prettier
+
+---
+
+## 🧩 Auth Flow
+
+- User signs up or logs in
+- Supabase session is stored client-side
+- `UserProfile` is auto-created via server function
+- Client and server components reactively check auth
+
+---
+
+## 🧪 Testing Ideas (WIP)
+
+Coming soon: testing setup (e.g. Playwright or Vitest + Testing Library)
+
+---
+
+## 🧼 TODO
+
+- [ ] Add unit/integration testing
+- [ ] Add Stripe billing
+- [ ] Add admin dashboard (with role-based RLS)
+- [ ] Add file uploads with Supabase Storage
+
+---
+
+## 📬 Feedback / Issues
+
+Feel free to open an issue or submit a PR to improve this starter!
+
+---
+
+## 🛡 License
+
+MIT

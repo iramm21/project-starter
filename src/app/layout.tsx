@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
-import "@/styles/globals.css";
-import { Toaster } from "sonner";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import type { Metadata } from 'next';
+import '@/styles/globals.css';
+import { Toaster } from 'sonner';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 
 export const metadata: Metadata = {
-  title: "Project Starter",
+  title: 'Project Starter',
   description:
-    "The project starter for a PSSN(Prisma, Supabase, Shadcn, NextJS) stack",
+    'The project starter for a PSSN(Prisma, Supabase, Shadcn, NextJS) stack',
 };
 
 export default function RootLayout({

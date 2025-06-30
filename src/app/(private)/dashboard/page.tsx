@@ -1,5 +1,5 @@
-import prisma from "@/lib/prisma";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import prisma from '@/lib/prisma';
+import { createSupabaseServerClient } from '@/lib/supabase/server';
 
 export default async function DashboardPage() {
   const supabase = await createSupabaseServerClient();
@@ -30,16 +30,16 @@ export default async function DashboardPage() {
           <strong>Email:</strong> {userProfile.email}
         </li>
         <li>
-          <strong>First Name:</strong> {userProfile.firstName ?? "N/A"}
+          <strong>First Name:</strong> {userProfile.firstName ?? 'N/A'}
         </li>
         <li>
-          <strong>Last Name:</strong> {userProfile.lastName ?? "N/A"}
+          <strong>Last Name:</strong> {userProfile.lastName ?? 'N/A'}
         </li>
         <li>
-          <strong>Phone:</strong> {userProfile.phone ?? "N/A"}
+          <strong>Phone:</strong> {userProfile.phone ?? 'N/A'}
         </li>
         <li>
-          <strong>Address:</strong> {userProfile.address ?? "N/A"}
+          <strong>Address:</strong> {userProfile.address ?? 'N/A'}
         </li>
       </ul>
     </div>

@@ -1,6 +1,6 @@
-"use server"
-import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
+'use server';
+import { createServerClient } from '@supabase/ssr';
+import { cookies } from 'next/headers';
 
 // Server-side supabase client factory (async)
 export async function createSupabaseServerClient() {
@@ -20,6 +20,6 @@ export async function createSupabaseServerClient() {
           });
         },
       },
-    }
+    },
   );
 }

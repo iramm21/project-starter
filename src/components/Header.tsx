@@ -1,17 +1,17 @@
-"use client";
-import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase/client";
-import type { User, Session, AuthChangeEvent } from "@supabase/auth-js";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+'use client';
+import { useEffect, useState } from 'react';
+import { supabase } from '@/lib/supabase/client';
+import type { User, Session, AuthChangeEvent } from '@supabase/auth-js';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-} from "@/components/ui/dropdown-menu";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
-import { LogoutButton } from "@/features/auth/components/LogoutButton";
+} from '@/components/ui/dropdown-menu';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { LogoutButton } from '@/features/auth/components/LogoutButton';
 
 export function Header() {
   const [user, setUser] = useState<User | null>(null);
@@ -28,7 +28,7 @@ export function Header() {
     const { data: listener } = supabase.auth.onAuthStateChange(
       (_event: AuthChangeEvent, session: Session | null) => {
         setUser(session?.user ?? null);
-      }
+      },
     );
     return () => listener.subscription.unsubscribe();
   }, []);

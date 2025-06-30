@@ -1,4 +1,4 @@
-import { UserProfileData } from "./userProfile";
+import { UserProfileData } from './userProfile';
 
 export interface RegisterUserData extends UserProfileData {
   password: string;

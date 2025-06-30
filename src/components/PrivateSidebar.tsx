@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils"; // your utility for conditional classes
-import { LogoutButton } from "@/features/auth/components/LogoutButton";
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils'; // your utility for conditional classes
+import { LogoutButton } from '@/features/auth/components/LogoutButton';
 
 export function Sidebar() {
   const pathname = usePathname();
 
   const navItems = [
-    { label: "Dashboard", href: "/dashboard" },
-    { label: "Profile", href: "/dashboard/profile" },
-    { label: "Settings", href: "/dashboard/settings" },
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'Profile', href: '/dashboard/profile' },
+    { label: 'Settings', href: '/dashboard/settings' },
   ];
 
   return (
@@ -26,10 +26,10 @@ export function Sidebar() {
             key={href}
             href={href}
             className={cn(
-              "block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+              'block rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground',
               pathname === href
-                ? "bg-accent text-accent-foreground"
-                : "text-muted-foreground"
+                ? 'bg-accent text-accent-foreground'
+                : 'text-muted-foreground',
             )}
           >
             {label}

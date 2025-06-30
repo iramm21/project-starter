@@ -1,6 +1,6 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -12,11 +12,11 @@ const compat = new FlatCompat({
 const eslintConfig = [
   // Ignore patterns go here
   {
-    ignores: ["src/generated/prisma/**"],
+    ignores: ['src/generated/prisma/**'],
   },
 
   // Then extend the existing compat config
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...compat.extends('next/core-web-vitals', 'next/typescript', 'prettier'),
 ];
 
 export default eslintConfig;

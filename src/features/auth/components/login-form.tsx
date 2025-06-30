@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useState, startTransition } from "react";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
-import { loginWithEmailServer } from "@/features/auth/actions/login";
-import { supabase } from "@/lib/supabase/client";
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useState, startTransition } from 'react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+import { loginWithEmailServer } from '@/features/auth/actions/login';
+import { supabase } from '@/lib/supabase/client';
 
 export function LoginForm({
   className,
   ...props
-}: React.ComponentProps<"form">) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+}: React.ComponentProps<'form'>) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const router = useRouter();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -25,7 +25,7 @@ export function LoginForm({
       loginWithEmailServer(email, password)
         .then(async (tokens) => {
           if (!tokens?.access_token || !tokens?.refresh_token) {
-            throw new Error("Invalid session tokens");
+            throw new Error('Invalid session tokens');
           }
 
           const { error } = await supabase.auth.setSession({
@@ -35,8 +35,8 @@ export function LoginForm({
 
           if (error) throw error;
 
-          toast.success("Logged in successfully");
-          router.push("/dashboard");
+          toast.success('Logged in successfully');
+          router.push('/dashboard');
         })
         .catch((err) => toast.error(err.message));
     });
@@ -45,7 +45,7 @@ export function LoginForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className={cn("flex flex-col gap-6", className)}
+      className={cn('flex flex-col gap-6', className)}
       {...props}
     >
       <div className="flex flex-col items-center gap-2 text-center">
@@ -103,7 +103,7 @@ export function LoginForm({
       </div>
 
       <div className="text-center text-sm">
-        Don&apos;t have an account?{" "}
+        Don&apos;t have an account?{' '}
         <a href="/register" className="underline underline-offset-4">
           Register
         </a>

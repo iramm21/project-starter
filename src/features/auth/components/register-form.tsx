@@ -1,23 +1,23 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { useState, startTransition } from "react";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
-import { registerWithEmail } from "@/features/auth/actions/register";
+'use client';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { useState, startTransition } from 'react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+import { registerWithEmail } from '@/features/auth/actions/register';
 
 export function RegisterForm({
   className,
   ...props
-}: React.ComponentProps<"form">) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
+}: React.ComponentProps<'form'>) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
 
   const router = useRouter();
 
@@ -34,8 +34,8 @@ export function RegisterForm({
         address,
       })
         .then(() => {
-          toast.success("Account created! Check your email.");
-          router.push("/login");
+          toast.success('Account created! Check your email.');
+          router.push('/login');
         })
         .catch((err) => toast.error(err.message));
     });
@@ -44,7 +44,7 @@ export function RegisterForm({
   return (
     <form
       onSubmit={handleSubmit}
-      className={cn("flex flex-col gap-6", className)}
+      className={cn('flex flex-col gap-6', className)}
       {...props}
     >
       <div className="flex flex-col items-center gap-2 text-center">
@@ -148,7 +148,7 @@ export function RegisterForm({
       </div>
 
       <div className="text-center text-sm">
-        Already have an account?{" "}
+        Already have an account?{' '}
         <a href="/login" className="underline underline-offset-4">
           Log in
         </a>

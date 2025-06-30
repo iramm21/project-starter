@@ -1,9 +1,9 @@
-"use server";
+'use server';
 
-import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { createUserProfile } from "@/features/userProfile/actions/createUserProfile";
-import { UserProfileCreateInput } from "@/types/userProfile";
-import { RegisterUserData } from "@/types/auth"; // or wherever you define it
+import { createSupabaseServerClient } from '@/lib/supabase/server';
+import { createUserProfile } from '@/features/userProfile/actions/createUserProfile';
+import { UserProfileCreateInput } from '@/types/userProfile';
+import { RegisterUserData } from '@/types/auth'; // or wherever you define it
 
 export async function registerWithEmail(data: RegisterUserData) {
   const supabase = await createSupabaseServerClient();
@@ -19,7 +19,7 @@ export async function registerWithEmail(data: RegisterUserData) {
   if (error) throw new Error(error.message);
 
   if (!signUpData.user) {
-    throw new Error("User data missing after sign up");
+    throw new Error('User data missing after sign up');
   }
 
   // 2. Create user profile in Prisma with authUserId

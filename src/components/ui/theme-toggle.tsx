@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
-import { Switch } from "@/components/ui/switch";
-import { Sun, Moon } from "lucide-react";
+import { useTheme } from 'next-themes';
+import { useEffect, useState } from 'react';
+import { Switch } from '@/components/ui/switch';
+import { Sun, Moon } from 'lucide-react';
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -15,7 +15,7 @@ export function ThemeToggle() {
 
   if (!mounted) return null;
 
-  const isDark = resolvedTheme === "dark";
+  const isDark = resolvedTheme === 'dark';
 
   return (
     <div className="flex items-center space-x-3">
@@ -27,7 +27,7 @@ export function ThemeToggle() {
       <Switch
         id="dark-mode"
         checked={isDark}
-        onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+        onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
       />
     </div>
   );

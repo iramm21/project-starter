@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import "@/styles/globals.css";
+import type { Metadata } from 'next';
+import '@/styles/globals.css';
 
 export const metadata: Metadata = {
-  title: "Project Starter",
+  title: 'Project Starter',
   description:
-    "The project starter for a PSSN (Prisma, Supabase, Shadcn, NextJS) stack",
+    'The project starter for a PSSN (Prisma, Supabase, Shadcn, NextJS) stack',
 };
 
 export default function AuthLayout({

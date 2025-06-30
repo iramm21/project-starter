@@ -1,5 +1,5 @@
-import { Sidebar } from "@/components/PrivateSidebar";
-import { Header } from "@/components/PrivateHeader";
+import { Sidebar } from '@/components/PrivateSidebar';
+import { Header } from '@/components/PrivateHeader';
 
 export default function PrivateLayout({
   children,
